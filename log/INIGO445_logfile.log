@@ -1,1 +1,47 @@
 [2024-04-02 15:57:23] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:18:36] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:18:38] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:20:59] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:21:00] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:21:30] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:21:31] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:24:01] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:24:02] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:24:11] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=4 shotsUp=3
+[2024-04-03 13:24:11] [DEBUG] [GameManager: 70] sameLevel level=1
+[2024-04-03 13:24:11] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=3 shotsUp=3
+[2024-04-03 13:48:00] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:48:03] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:48:29] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 13:52:14] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:52:16] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:52:24] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 13:52:36] [DEBUG] [GameManager: 70] sameLevel level=1
+[2024-04-03 13:52:36] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 13:52:37] [DEBUG] [GameManager: 70] sameLevel level=1
+[2024-04-03 13:52:37] [DEBUG] [GameManager:199] updateGame E_APP_LOST enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 13:52:49] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 13:52:50] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 13:53:24] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 13:53:26] [DEBUG] [GameManager: 70] sameLevel level=1
+[2024-04-03 13:53:37] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 14:21:48] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 14:21:50] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 14:28:49] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 14:28:51] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 14:29:38] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=6 shotsUp=5
+[2024-04-03 15:22:37] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 15:22:38] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 15:26:02] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 15:26:04] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 15:26:38] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 15:36:26] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 15:36:27] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 15:37:08] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 15:37:10] [DEBUG] [GameManager: 70] sameLevel level=1
+[2024-04-03 15:37:11] [DEBUG] [GameManager:201] updateGame E_APP_ONELESSLIFE enemies=3 shotsDown=0 shotsUp=0
+[2024-04-03 15:37:13] [DEBUG] [GameManager: 70] sameLevel level=1
+[2024-04-03 15:45:40] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 15:45:42] [DEBUG] [GameManager: 52] start level=1
+[2024-04-03 16:17:14] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-03 16:17:15] [DEBUG] [GameManager: 52] start level=1

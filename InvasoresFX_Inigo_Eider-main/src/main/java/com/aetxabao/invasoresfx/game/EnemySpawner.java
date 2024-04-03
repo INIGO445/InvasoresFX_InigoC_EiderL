@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.aetxabao.invasoresfx.game.AppConsts.*;
 import static com.aetxabao.invasoresfx.game.enums.EEnemyShot.*;
@@ -53,6 +54,8 @@ public class EnemySpawner {
             case 2:
                 enemies = crearEnemigosNivelPaquito(gameRect);
                 break;
+            //case 3:
+                //enemies =
             case 3:
             default:
                 enemies = crearEnemigosNivelPulpo(gameRect);
@@ -91,7 +94,7 @@ public class EnemySpawner {
 
     public static List<AEnemy> crearEnemigosNivelDonut(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 0, vx + 10, 0, E_SHOT_GUN));
         enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 7, 1, -vx, 0, E_SHOT_GUN));
         List<EnemyShip> el1 = new ArrayList<>();
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 2, 3, 0, 0, E_SHOT_NOTHING));
@@ -100,8 +103,8 @@ public class EnemySpawner {
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 5, 3, 0, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 2, 4, 0, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 3, 5, 0, 0, E_SHOT_NOTHING));
-        el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 4, 5, 0, 0, E_SHOT_NOTHING));
-        el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 5, 4, 0, 0, E_SHOT_NOTHING));
+        el1.add(createEnemyShip(E_NORMAL, AMONUS, gameRect, 4, 5, 0, 0, E_SHOT_NOTHING));
+        el1.add(createEnemyShip(E_NORMAL, CAT, gameRect, 5, 4, 0, 0, E_SHOT_NOTHING));
         EnemyShipGroup eg1 = new EnemyShipGroup(gameRect, el1);
         eg1.setXSpeed(vx);
         enemies.add(eg1);
@@ -134,6 +137,18 @@ public class EnemySpawner {
         enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 3, 0, -vx, vy, E_SHOT_NOTHING));
         enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 4, 0, vx, vy, E_SHOT_NOTHING));
         return enemies;
+    }
+    public static List<AEnemy> crearEnemigosNivelCemboLevel(Rect gameRect)
+    {
+        List<AEnemy> enemies = new ArrayList<>();
+        return null;
+
+    }
+    public static List<AEnemy> crearEnemigosNivelEiderLevel(Rect gameRect)
+    {
+        List<AEnemy> enemies = new ArrayList<>();
+        return null;
+
     }
 
 }
