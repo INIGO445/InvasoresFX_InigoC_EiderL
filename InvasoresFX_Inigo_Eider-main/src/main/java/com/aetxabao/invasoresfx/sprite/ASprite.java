@@ -12,6 +12,8 @@ public abstract class ASprite {
 
     protected int x;
     protected int y;
+    protected int vidas;
+    protected boolean teleport;
     protected int xSpeed;
     protected int ySpeed;
     protected Image img;
@@ -84,4 +86,19 @@ public abstract class ASprite {
 
     public abstract void update();
 
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setTeleport(boolean teleport) {
+        this.teleport = teleport;
+    }
+    public boolean isTeleport()
+    {
+        return teleport;
+    }
 }

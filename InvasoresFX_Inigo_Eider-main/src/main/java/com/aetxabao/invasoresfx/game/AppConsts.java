@@ -34,6 +34,7 @@ public final class AppConsts {
     static final Image ENEMYSHIP_SPRITE_IMAGE_3 = new Image(Main.class.getResource("sprite/ei3.png").toString());
     static final Image CAT = new Image(Main.class.getResource("sprite/cat2.0.png").toString());
     static final Image AMONUS = new Image(Main.class.getResource("sprite/AMONGUS.png").toString());
+    static final Image PINGU = new Image(Main.class.getResource("sprite/pingu.png").toString());
     static final Image ENEMYBARRIER4_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/barrier4.png").toString());
     static final Image ENEMYTOWER3_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/tower3.png").toString());
     //endregion
@@ -48,6 +49,7 @@ public final class AppConsts {
     static final Image LASER_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/laser.png").toString());
     static final Image EXPLOSION_9_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/explo9.png").toString());
     static final Image EXPLOSION_12_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/explo12.png").toString());
+
     //endregion
 
     //region Renderer

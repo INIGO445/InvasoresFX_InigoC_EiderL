@@ -8,6 +8,7 @@ import com.aetxabao.invasoresfx.sprite.IHaveShield;
 import com.aetxabao.invasoresfx.sprite.weaponry.AShot;
 import com.aetxabao.invasoresfx.sprite.weaponry.Laserbeam;
 import com.aetxabao.invasoresfx.util.Rect;
+import com.aetxabao.invasoresfx.sprite.ICanTeleport;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -150,10 +151,17 @@ public class GameManager {
                     }else if (sprite instanceof IHaveShield){
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                                  EXPLOSION_9_SPRITE_IMAGE, 9));
-//                        if (((EnemyBarrier) sprite).impact()){
-//                            itSprite.remove();
-//                        }
-                    }else{
+                        if ((((IHaveShield) sprite).impact())){
+                            sprite.setVidas(sprite.getVidas() - 1);
+                            if (sprite instanceof ICanTeleport) {
+                                ((ICanTeleport) sprite).teleport();
+                            }
+                        } if (sprite.getVidas() == -1) {
+                            itSprite.remove();
+                        }
+                    }
+
+                    else{
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                                  EXPLOSION_9_SPRITE_IMAGE, 9));
                         itSprite.remove();

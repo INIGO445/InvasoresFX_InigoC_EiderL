@@ -49,7 +49,7 @@ public class EnemySpawner {
 
         switch (level){
             case 1:
-                enemies = crearEnemigosNivelDonut(gameRect);
+                enemies = crearEnemigosNivelEiderLevel(gameRect);
                 break;
             case 2:
                 enemies = crearEnemigosNivelPaquito(gameRect);
@@ -78,6 +78,9 @@ public class EnemySpawner {
             case E_DIAGONAL:
                 e = new EnemyShipDiagonal(gameRect, enemyImage, TICKSxFRAME);
                 break;
+            //case E_ESCUDO:
+                //e = new Escudo(gameRect, enemyImage, TICKSxFRAME);
+                //break;
             case E_NORMAL:
             default:
                 e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
@@ -91,10 +94,60 @@ public class EnemySpawner {
         e.setYSpeed(vy);
         return e;
     }
+    public static EnemyShip createEnemyShip(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot, int vidas) {
+        EnemyShip e;
+        switch (type){
+            case E_DIAGONAL:
+                e = new EnemyShipDiagonal(gameRect, enemyImage, TICKSxFRAME);
+                break;
+            case E_ESCUDO:
+                e = new Escudo(gameRect, enemyImage, TICKSxFRAME);
+                break;
+            case E_NORMAL:
+            default:
+                e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
+                break;
+        }
+        if (shot == E_SHOT_GUN){
+            e.setWeapon(new Gun());
+        }
+        e.setPos(getX(gameRect, i), getY(gameRect, j));
+        e.setXSpeed(vx);
+        e.setYSpeed(vy);
+        e.setVidas(vidas);
+        return e;
+    }
+    public static EnemyShip createEnemyShip(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot, int vidas, boolean teleport) {
+        EnemyShip e;
+        switch (type) {
+            case E_DIAGONAL:
+                e = new EnemyShipDiagonal(gameRect, enemyImage, TICKSxFRAME);
+                break;
+            case E_ESCUDO:
+                e = new Escudo(gameRect, enemyImage, TICKSxFRAME);
+                break;
+            case E_TELETRANSPORTE:
+                e = new Teletranporte(gameRect, enemyImage, TICKSxFRAME);
+                break;
+            case E_NORMAL:
+            default:
+                e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
+                break;
+        }
+        if (shot == E_SHOT_GUN) {
+            e.setWeapon(new Gun());
+        }
+        e.setPos(getX(gameRect, i), getY(gameRect, j));
+        e.setXSpeed(vx);
+        e.setYSpeed(vy);
+        e.setVidas(vidas);
+        e.setTeleport(teleport);
+        return e;
+    }
 
     public static List<AEnemy> crearEnemigosNivelDonut(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 0, vx + 10, 0, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 0, vx , 0, E_SHOT_GUN));
         enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 7, 1, -vx, 0, E_SHOT_GUN));
         List<EnemyShip> el1 = new ArrayList<>();
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 2, 3, 0, 0, E_SHOT_NOTHING));
@@ -103,8 +156,8 @@ public class EnemySpawner {
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 5, 3, 0, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 2, 4, 0, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 3, 5, 0, 0, E_SHOT_NOTHING));
-        el1.add(createEnemyShip(E_NORMAL, AMONUS, gameRect, 4, 5, 0, 0, E_SHOT_NOTHING));
-        el1.add(createEnemyShip(E_NORMAL, CAT, gameRect, 5, 4, 0, 0, E_SHOT_NOTHING));
+        el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 4, 5, 0, 0, E_SHOT_NOTHING));
+        el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 5, 4, 0, 0, E_SHOT_NOTHING));
         EnemyShipGroup eg1 = new EnemyShipGroup(gameRect, el1);
         eg1.setXSpeed(vx);
         enemies.add(eg1);
@@ -122,6 +175,7 @@ public class EnemySpawner {
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 3, 4, vx, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 4, 4, vx, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 5, 4, vx, 0, E_SHOT_NOTHING));
+        //el1.add(createEnemyShip(E_ESCUDO, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 3,2 ,0,0, E_SHOT_GUN, 3));
         EnemyShipGroup eg1 = new EnemyShipGroup(gameRect, el1);
         eg1.setXSpeed(vx);
         enemies.add(eg1);
@@ -147,8 +201,29 @@ public class EnemySpawner {
     public static List<AEnemy> crearEnemigosNivelEiderLevel(Rect gameRect)
     {
         List<AEnemy> enemies = new ArrayList<>();
-        return null;
+        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 1,4,0,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 7,4,0,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 0,0,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 2,0,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 4,0,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 6,0,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 2, 3, vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 3, 2, -vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 4, 2, vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 5, 3, -vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 2, 4, vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 3, 5, -vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 4, 5, vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 5, 4, -vx, vy, E_SHOT_NOTHING));
+        enemies.add(createEnemyShip(E_ESCUDO, AMONUS, gameRect, 0, 1, -vx, vy, E_SHOT_NOTHING, 3));
+        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 0, 3, -vx, vy, E_SHOT_NOTHING, 3, true));
+        return enemies;
 
+    }
+    public static List<AEnemy> crearEnemigosNivelFrenesi(Rect gameRect)
+    {
+        List<AEnemy> enemies = new ArrayList<>();
+        return null;
     }
 
 }
