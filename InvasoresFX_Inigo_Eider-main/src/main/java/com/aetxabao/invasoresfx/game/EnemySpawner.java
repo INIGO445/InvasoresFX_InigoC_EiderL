@@ -3,6 +3,7 @@ package com.aetxabao.invasoresfx.game;
 import com.aetxabao.invasoresfx.game.enums.EEnemyShot;
 import com.aetxabao.invasoresfx.game.enums.EEnemyType;
 import com.aetxabao.invasoresfx.sprite.*;
+import com.aetxabao.invasoresfx.sprite.weaponry.Fantasma;
 import com.aetxabao.invasoresfx.sprite.weaponry.Gun;
 import com.aetxabao.invasoresfx.util.Rect;
 import javafx.scene.image.Image;
@@ -78,9 +79,6 @@ public class EnemySpawner {
             case E_DIAGONAL:
                 e = new EnemyShipDiagonal(gameRect, enemyImage, TICKSxFRAME);
                 break;
-            //case E_ESCUDO:
-                //e = new Escudo(gameRect, enemyImage, TICKSxFRAME);
-                //break;
             case E_NORMAL:
             default:
                 e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
@@ -103,6 +101,15 @@ public class EnemySpawner {
             case E_ESCUDO:
                 e = new Escudo(gameRect, enemyImage, TICKSxFRAME);
                 break;
+            case E_TELETRANSPORTE:
+                e = new Teletranporte(gameRect, enemyImage, TICKSxFRAME);
+                e.setTeleport(true);
+                break;
+            case E_RANDOM: e = new MoRandom(gameRect, enemyImage, TICKSxFRAME);
+                break;
+            case E_PACMAN:
+                e = new PACMAN(gameRect, enemyImage, TICKSxFRAME);
+                break;
             case E_NORMAL:
             default:
                 e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
@@ -111,39 +118,18 @@ public class EnemySpawner {
         if (shot == E_SHOT_GUN){
             e.setWeapon(new Gun());
         }
+        if (shot == E_FANTASMA)
+        {
+            e.setWeapon(new Fantasma());
+        }
         e.setPos(getX(gameRect, i), getY(gameRect, j));
         e.setXSpeed(vx);
         e.setYSpeed(vy);
         e.setVidas(vidas);
         return e;
     }
-    public static EnemyShip createEnemyShip(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot, int vidas, boolean teleport) {
-        EnemyShip e;
-        switch (type) {
-            case E_DIAGONAL:
-                e = new EnemyShipDiagonal(gameRect, enemyImage, TICKSxFRAME);
-                break;
-            case E_ESCUDO:
-                e = new Escudo(gameRect, enemyImage, TICKSxFRAME);
-                break;
-            case E_TELETRANSPORTE:
-                e = new Teletranporte(gameRect, enemyImage, TICKSxFRAME);
-                break;
-            case E_NORMAL:
-            default:
-                e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
-                break;
-        }
-        if (shot == E_SHOT_GUN) {
-            e.setWeapon(new Gun());
-        }
-        e.setPos(getX(gameRect, i), getY(gameRect, j));
-        e.setXSpeed(vx);
-        e.setYSpeed(vy);
-        e.setVidas(vidas);
-        e.setTeleport(teleport);
-        return e;
-    }
+
+
 
     public static List<AEnemy> crearEnemigosNivelDonut(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
@@ -175,7 +161,6 @@ public class EnemySpawner {
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 3, 4, vx, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 4, 4, vx, 0, E_SHOT_NOTHING));
         el1.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 5, 4, vx, 0, E_SHOT_NOTHING));
-        //el1.add(createEnemyShip(E_ESCUDO, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 3,2 ,0,0, E_SHOT_GUN, 3));
         EnemyShipGroup eg1 = new EnemyShipGroup(gameRect, el1);
         eg1.setXSpeed(vx);
         enemies.add(eg1);
@@ -215,8 +200,7 @@ public class EnemySpawner {
         enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 3, 5, -vx, vy, E_SHOT_NOTHING));
         enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 4, 5, vx, vy, E_SHOT_NOTHING));
         enemies.add(createEnemyShip(E_DIAGONAL, AMONUS, gameRect, 5, 4, -vx, vy, E_SHOT_NOTHING));
-        enemies.add(createEnemyShip(E_ESCUDO, AMONUS, gameRect, 0, 1, -vx, vy, E_SHOT_NOTHING, 3));
-        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 0, 3, -vx, vy, E_SHOT_NOTHING, 3, true));
+
         return enemies;
 
     }

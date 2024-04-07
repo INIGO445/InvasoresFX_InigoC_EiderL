@@ -48,7 +48,7 @@ public abstract class ASprite {
         this.xSpeed = xSpeed;
     }
 
-    public int getYSpeed(){
+    public int getYSpeed() {
         return ySpeed;
     }
 
@@ -100,5 +100,13 @@ public abstract class ASprite {
     public boolean isTeleport()
     {
         return teleport;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

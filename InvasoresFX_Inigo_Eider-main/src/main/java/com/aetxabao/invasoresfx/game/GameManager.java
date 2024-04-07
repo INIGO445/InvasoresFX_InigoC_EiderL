@@ -149,14 +149,24 @@ public class GameManager {
                             }
                         }
                     }else if (sprite instanceof IHaveShield){
-                        temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
-                                                 EXPLOSION_9_SPRITE_IMAGE, 9));
                         if ((((IHaveShield) sprite).impact())){
                             sprite.setVidas(sprite.getVidas() - 1);
                             if (sprite instanceof ICanTeleport) {
                                 ((ICanTeleport) sprite).teleport();
                             }
-                        } if (sprite.getVidas() == -1) {
+                            if (sprite instanceof Random)
+                            {
+                                ((Random) sprite).cambio();
+                            }
+                        } if (sprite.getVidas() == -1 && !(sprite instanceof SoyPacman)) {
+                            temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
+                                    EXPLOSION_9_SPRITE_IMAGE, 9));
+                            itSprite.remove();
+                        }
+                        else if (sprite.getVidas() == -1 && sprite instanceof SoyPacman)
+                        {
+                            temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
+                                    EXPLOSION_PACMAN, 5));
                             itSprite.remove();
                         }
                     }
@@ -189,6 +199,15 @@ public class GameManager {
         //Actualización de los enemigos
         for (ASprite enemy : enemies) {
             enemy.update();
+            if (enemy instanceof Random)
+            {
+                if (enemy.getX() == 0)
+                {
+                    enemy.setXSpeed(5);
+                    enemy.setYSpeed(3);
+                    enemy.setPos(0,0);
+                }
+            }
         }
         //Generación de nuevos enemigos
         List<AEnemy> newList = new ArrayList<>();
