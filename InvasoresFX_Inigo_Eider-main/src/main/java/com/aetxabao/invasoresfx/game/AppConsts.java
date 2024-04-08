@@ -51,7 +51,7 @@ public final class AppConsts {
     static final Image EXPLOSION_9_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/explo9.png").toString());
     static final Image EXPLOSION_12_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/explo12.png").toString());
     public static final Image FANTASMA = new Image(Main.class.getResource("sprite/Fantasma.png").toString());
-    static final Image PACMAN = new Image(Main.class.getResource("sprite/pac man.png").toString());
+    static final Image PACMAN = new Image(Main.class.getResource("sprite/Pac.png").toString());
     static final Image EXPLOSION_PACMAN = new Image(Main.class.getResource("sprite/Packman Muerte.png").toString());
 
     //endregion

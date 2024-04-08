@@ -50,14 +50,27 @@ public class EnemySpawner {
 
         switch (level){
             case 1:
-                enemies = crearEnemigosNivelEiderLevel(gameRect);
+                enemies = crearEnemigosNivelCemboLevel(gameRect);//crearEnemigosNivelEiderLevel(gameRect);
                 break;
             case 2:
+                enemies = crearEnemigosNivelCemboLevel(gameRect);
+                break;
+            case 3:
+                enemies = nivelFantasmas(gameRect);
+                break;
+            case 4:
+                enemies = nivelDificilNAI(gameRect);
+                break;
+            case 5:
+                enemies = crearEnemigosNivelFrenesi(gameRect);
+                break;
+            case 6:
+                enemies = crearEnemigosNivelDonut(gameRect);
+                break;
+            case 7:
                 enemies = crearEnemigosNivelPaquito(gameRect);
                 break;
-            //case 3:
-                //enemies =
-            case 3:
+            case 8:
             default:
                 enemies = crearEnemigosNivelPulpo(gameRect);
                 break;
@@ -180,7 +193,21 @@ public class EnemySpawner {
     public static List<AEnemy> crearEnemigosNivelCemboLevel(Rect gameRect)
     {
         List<AEnemy> enemies = new ArrayList<>();
-        return null;
+        /*enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 0,0,vx,0,E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 2,0,vx,0,E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 4,0,vx,0,E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 6,0,vx,0,E_SHOT_GUN,5));*/
+        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 1,14,vx,0,E_SHOT_GUN,2));
+        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 3,0,vx,0,E_SHOT_GUN,2));
+        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 5,0,vx,0,E_SHOT_GUN,2));
+        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 7,0,vx,0,E_SHOT_GUN,2));
+        /*enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 3,2,vx,0,E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 6,2,vx,0,E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 0,4,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 2,4,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 4,4,vx,0,E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, CAT, gameRect, 6,4,vx,0,E_SHOT_GUN));*/
+        return enemies;
 
     }
     public static List<AEnemy> crearEnemigosNivelEiderLevel(Rect gameRect)
@@ -207,7 +234,65 @@ public class EnemySpawner {
     public static List<AEnemy> crearEnemigosNivelFrenesi(Rect gameRect)
     {
         List<AEnemy> enemies = new ArrayList<>();
-        return null;
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 0, 0, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 2, 0, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 4, 0, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 6, 0, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 0, 1, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 2, 1, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 4, 1, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 6, 1, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 0, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 2, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 4, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 6, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 0, 3, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 2, 3, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 4, 3, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 6, 3, vx, vy, E_SHOT_GUN,5));
+        return enemies;
+    }
+    public static  List<AEnemy> nivelFantasmas(Rect gameRect)
+    {
+        List<AEnemy> enemies = new ArrayList<>();
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 0, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 1, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 2, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 3, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 4, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 5, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 6, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 7, 0, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 0, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 1, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 2, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 3, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 4, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 5, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 6, 1, vx, 0, E_FANTASMA, 10));
+        enemies.add(createEnemyShip(E_PACMAN, PACMAN, gameRect, 7, 1, vx, 0, E_FANTASMA, 10));
+        return enemies;
+    }
+    public static  List<AEnemy> nivelDificilNAI(Rect gameRect)
+    {
+        List<AEnemy> enemies = new ArrayList<>();
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 0, 0, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 2, 0, -vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 4, 0, -vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, PINGU, gameRect, 6, 0, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 0, 1, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 2, 1, -vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 4, 1, -vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, AMONUS, gameRect, 6, 1, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 0, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 2, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 4, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, CAT, gameRect, 6, 2, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 0, 3, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 2, 3, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 4, 3, vx, vy, E_SHOT_GUN,5));
+        enemies.add(createEnemyShip(E_RANDOM, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 6, 3, vx, vy, E_SHOT_GUN,5));
+        return enemies;
     }
 
 }

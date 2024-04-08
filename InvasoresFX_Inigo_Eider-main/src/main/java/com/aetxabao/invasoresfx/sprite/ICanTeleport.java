@@ -4,5 +4,5 @@ public interface ICanTeleport extends IHaveShield{
     @Override
     boolean impact();
 
-    boolean teleport();
+    void teleport();
 }

@@ -151,7 +151,7 @@ public class GameManager {
                     }else if (sprite instanceof IHaveShield){
                         if ((((IHaveShield) sprite).impact())){
                             sprite.setVidas(sprite.getVidas() - 1);
-                            if (sprite instanceof ICanTeleport) {
+                            if (sprite instanceof ICanTeleport && sprite.getVidas()> -1) {
                                 ((ICanTeleport) sprite).teleport();
                             }
                             if (sprite instanceof Random)
@@ -199,15 +199,6 @@ public class GameManager {
         //Actualización de los enemigos
         for (ASprite enemy : enemies) {
             enemy.update();
-            if (enemy instanceof Random)
-            {
-                if (enemy.getX() == 0)
-                {
-                    enemy.setXSpeed(5);
-                    enemy.setYSpeed(3);
-                    enemy.setPos(0,0);
-                }
-            }
         }
         //Generación de nuevos enemigos
         List<AEnemy> newList = new ArrayList<>();
