@@ -40,8 +40,7 @@ public class GameManager implements Audio{
     private static Logger log = Logger.getLogger(GameManager.class);
     private Clip muerte;
     private Clip soundtrack;
-
-    private File sonido;
+    
     // endregion
 
     public GameManager(Rect gameRect, AppStatus appStatus) {
@@ -51,16 +50,6 @@ public class GameManager implements Audio{
         this.appStatus = appStatus;
         ship = new Ship(gameRect, SHIP_SPRITE_IMAGE);
         lifesSprite = new LifesSprite(gameRect, LIFES_SPRITE_IMAGE, appStatus);
-        try {
-            File sonido = new File("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
-            muerte = AudioSystem.getClip();
-            muerte.open(audioInputStream);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
     }
     public void cambio(String path)
     {
@@ -79,7 +68,7 @@ public class GameManager implements Audio{
     @Override
     public void soundtrack() {
         try {
-            sonido = new File("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/thunderbird-game-over-9232.wav");
+            File sonido = new File("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/thunderbird-game-over-9232.wav");
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
             soundtrack = AudioSystem.getClip();
             soundtrack.open(audioInputStream);
