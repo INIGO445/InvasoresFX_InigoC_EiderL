@@ -196,7 +196,7 @@ public class EnemySpawner {
         enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 2,0,vx,0,E_SHOT_GUN,5));
         enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 4,0,vx,0,E_SHOT_GUN,5));
         enemies.add(createEnemyShip(E_ESCUDO, PINGU, gameRect, 6,0,vx,0,E_SHOT_GUN,5));
-        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 1,14,vx,0,E_SHOT_GUN,2));
+        enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 1,0,vx,0,E_SHOT_GUN,2));
         enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 3,0,vx,0,E_SHOT_GUN,2));
         enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 5,0,vx,0,E_SHOT_GUN,2));
         enemies.add(createEnemyShip(E_TELETRANSPORTE, AMONUS, gameRect, 7,0,vx,0,E_SHOT_GUN,2));

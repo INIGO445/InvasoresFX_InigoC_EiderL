@@ -30,7 +30,6 @@ public class MoRandom extends EnemyShipDiagonal implements Random{
         int random = (int) (Math.random()*15 + 1);
         int randomX = (int) (Math.random()*20 - 10);
         int randomY = (int) (Math.random()*20 - 10);
-
         if (getXSpeed() %2 != 0)
         {
             int randomA = (int) (Math.random()*2 + 1);

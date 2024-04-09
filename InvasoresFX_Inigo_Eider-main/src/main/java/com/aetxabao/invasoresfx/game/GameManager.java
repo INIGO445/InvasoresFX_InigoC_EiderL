@@ -52,7 +52,7 @@ public class GameManager implements Audio{
         ship = new Ship(gameRect, SHIP_SPRITE_IMAGE);
         lifesSprite = new LifesSprite(gameRect, LIFES_SPRITE_IMAGE, appStatus);
         try {
-            File sonido = new File("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
+            File sonido = new File("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
             muerte = AudioSystem.getClip();
             muerte.open(audioInputStream);
@@ -79,7 +79,7 @@ public class GameManager implements Audio{
     @Override
     public void soundtrack() {
         try {
-            sonido = new File("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/thunderbird-game-over-9232.wav");
+            sonido = new File("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/thunderbird-game-over-9232.wav");
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
             soundtrack = AudioSystem.getClip();
             soundtrack.open(audioInputStream);
@@ -89,7 +89,6 @@ public class GameManager implements Audio{
             e.printStackTrace();
         }
         soundtrack.start();
-        soundtrack.loop(999);
     }
 
     public void start(){
@@ -206,14 +205,13 @@ public class GameManager implements Audio{
                             sprite.setVidas(sprite.getVidas() - 1);
                             if (sprite instanceof ICanTeleport && sprite.getVidas()> -1) {
                                 ((ICanTeleport) sprite).teleport();
-                                sprite.setPos(3,4);
                             }
                             if (sprite instanceof Random)
                             {
                                 ((Random) sprite).cambio();
                             }
                         } if (sprite.getVidas() == -1 && !(sprite instanceof SoyPacman)) {
-                            cambio("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
+                            cambio("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
                             reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_9_SPRITE_IMAGE, 9));
@@ -221,7 +219,7 @@ public class GameManager implements Audio{
                         }
                         else if (sprite.getVidas() == -1 && sprite instanceof SoyPacman)
                         {
-                            cambio("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/pacman-dies.wav");
+                            cambio("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/pacman-dies.wav");
                             reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_PACMAN, 5));
@@ -230,7 +228,7 @@ public class GameManager implements Audio{
                     }
 
                     else{
-                        cambio("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
+                        cambio("InvasoresFX_Inigo_Eider-main/src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                 EXPLOSION_9_SPRITE_IMAGE, 9));
                         reproducir();
@@ -259,6 +257,11 @@ public class GameManager implements Audio{
         //Actualización de los enemigos
         for (ASprite enemy : enemies) {
             enemy.update();
+            if (enemy.getY() <= 0)
+            {
+                enemy.setXSpeed(5);
+                enemy.setYSpeed(3);
+            }
         }
         //Generación de nuevos enemigos
         List<AEnemy> newList = new ArrayList<>();
