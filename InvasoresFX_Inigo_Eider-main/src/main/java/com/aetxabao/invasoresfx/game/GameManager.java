@@ -61,6 +61,19 @@ public class GameManager implements Audio{
             e.printStackTrace();
         }
     }
+    public void cambio(String path)
+    {
+        try {
+            sonido = new File(path);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     public void start(){
         appStatus.start();
@@ -181,6 +194,7 @@ public class GameManager implements Audio{
                                 ((Random) sprite).cambio();
                             }
                         } if (sprite.getVidas() == -1 && !(sprite instanceof SoyPacman)) {
+                            cambio("C:\\Users\\inigo\\OneDrive\\Desktop\\InvasoresFX_Inigo_Eider-main (2)\\InvasoresFX_Inigo_Eider-main\\src\\main\\java\\com\\aetxabao\\invasoresfx\\sprite\\weaponry\\large-underwater-explosion-190270.wav");
                             reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_9_SPRITE_IMAGE, 9));
@@ -188,6 +202,7 @@ public class GameManager implements Audio{
                         }
                         else if (sprite.getVidas() == -1 && sprite instanceof SoyPacman)
                         {
+                            cambio("C:\\Users\\inigo\\OneDrive\\Desktop\\InvasoresFX_Inigo_Eider-main (2)\\InvasoresFX_Inigo_Eider-main\\src\\main\\java\\com\\aetxabao\\invasoresfx\\sprite\\weaponry\\pacman-dies.wav");
                             reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_PACMAN, 5));
