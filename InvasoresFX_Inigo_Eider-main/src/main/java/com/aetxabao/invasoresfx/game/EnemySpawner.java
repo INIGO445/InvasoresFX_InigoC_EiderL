@@ -50,7 +50,7 @@ public class EnemySpawner {
 
         switch (level){
             case 1:
-                enemies = nivelFantasmas(gameRect);//crearEnemigosNivelEiderLevel(gameRect);//nivelDificilNAI(gameRect);//crearEnemigosNivelCemboLevel(gameRect);//crearEnemigosNivelEiderLevel(gameRect);
+                enemies = crearEnemigosNivelEiderLevel(gameRect);
                 break;
             case 2:
                 enemies = crearEnemigosNivelCemboLevel(gameRect);
@@ -70,7 +70,6 @@ public class EnemySpawner {
             case 7:
                 enemies = crearEnemigosNivelPaquito(gameRect);
                 break;
-            case 8:
             default:
                 enemies = crearEnemigosNivelPulpo(gameRect);
                 break;
