@@ -19,8 +19,10 @@ import static com.aetxabao.invasoresfx.game.enums.EAppStatus.*;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import javax.sound.sampled.*;
+import java.io.File;
 
-public class GameManager {
+public class GameManager implements Audio{
 
     // region attributes
     private Rect gameRect;
@@ -36,7 +38,9 @@ public class GameManager {
     private AppStatus appStatus;
 
     private static Logger log = Logger.getLogger(GameManager.class);
+    private Clip clip;
 
+    private File sonido;
     // endregion
 
     public GameManager(Rect gameRect, AppStatus appStatus) {
@@ -46,6 +50,16 @@ public class GameManager {
         this.appStatus = appStatus;
         ship = new Ship(gameRect, SHIP_SPRITE_IMAGE);
         lifesSprite = new LifesSprite(gameRect, LIFES_SPRITE_IMAGE, appStatus);
+        try {
+            sonido = new File("C:\\Users\\inigo\\OneDrive\\Desktop\\InvasoresFX_Inigo_Eider-main (2)\\InvasoresFX_Inigo_Eider-main\\src\\main\\java\\com\\aetxabao\\invasoresfx\\sprite\\weaponry\\large-underwater-explosion-190270.wav");
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void start(){
@@ -106,6 +120,14 @@ public class GameManager {
         shot.setPos(ship.getRect().centerX(), ship.getRect().top - shot.getRect().height());
         shotsUp.add(shot);
     }
+    public void reproducir()
+    {
+        if (clip != null)
+        {
+            clip.setFramePosition(0);
+            clip.start();
+        }
+    }
 
     public void updateGame(){
 
@@ -159,12 +181,14 @@ public class GameManager {
                                 ((Random) sprite).cambio();
                             }
                         } if (sprite.getVidas() == -1 && !(sprite instanceof SoyPacman)) {
+                            reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_9_SPRITE_IMAGE, 9));
                             itSprite.remove();
                         }
                         else if (sprite.getVidas() == -1 && sprite instanceof SoyPacman)
                         {
+                            reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_PACMAN, 5));
                             itSprite.remove();
@@ -174,6 +198,7 @@ public class GameManager {
                     else{
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                                  EXPLOSION_9_SPRITE_IMAGE, 9));
+                        reproducir();
                         itSprite.remove();
                     }
                     score += AppConsts.PTS_ENEMYSHIP;
