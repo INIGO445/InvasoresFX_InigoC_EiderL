@@ -97,11 +97,11 @@ public class Teletranporte extends EnemyShip implements ICanTeleport{
     public boolean impact() {
         return true;
     }
-
+    
     @Override
     public void teleport() {
-        int randomX = (int) (Math.random()*5 + 1);
-        int randomY = (int) (Math.random()*5 + 1);
+        int randomX = (int) (Math.random()*230*2);
+        int randomY = (int) (Math.random()*500);
         setPos(randomX,randomY);
     }
 }

@@ -38,7 +38,8 @@ public class GameManager implements Audio{
     private AppStatus appStatus;
 
     private static Logger log = Logger.getLogger(GameManager.class);
-    private Clip clip;
+    private Clip muerte;
+    private Clip soundtrack;
 
     private File sonido;
     // endregion
@@ -51,10 +52,10 @@ public class GameManager implements Audio{
         ship = new Ship(gameRect, SHIP_SPRITE_IMAGE);
         lifesSprite = new LifesSprite(gameRect, LIFES_SPRITE_IMAGE, appStatus);
         try {
-            sonido = new File("C:\\Users\\inigo\\OneDrive\\Desktop\\InvasoresFX_Inigo_Eider-main (2)\\InvasoresFX_Inigo_Eider-main\\src\\main\\java\\com\\aetxabao\\invasoresfx\\sprite\\weaponry\\large-underwater-explosion-190270.wav");
+            File sonido = new File("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
+            muerte = AudioSystem.getClip();
+            muerte.open(audioInputStream);
         }
         catch (Exception e)
         {
@@ -64,15 +65,31 @@ public class GameManager implements Audio{
     public void cambio(String path)
     {
         try {
-            sonido = new File(path);
+            File sonido = new File(path);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
+            muerte = AudioSystem.getClip();
+            muerte.open(audioInputStream);
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void soundtrack() {
+        try {
+            sonido = new File("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/thunderbird-game-over-9232.wav");
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sonido);
+            soundtrack = AudioSystem.getClip();
+            soundtrack.open(audioInputStream);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        soundtrack.start();
+        soundtrack.loop(999);
     }
 
     public void start(){
@@ -83,6 +100,7 @@ public class GameManager implements Audio{
         ship.setAlive(true);
         lifesSprite.update();
         enemies = EnemySpawner.createEnemies(gameRect, appStatus.getLevel());
+        soundtrack();
     }
 
     public void nextLevel(){
@@ -135,17 +153,17 @@ public class GameManager implements Audio{
     }
     public void reproducir()
     {
-        if (clip != null)
+        if (muerte != null)
         {
-            clip.setFramePosition(0);
-            clip.start();
+            muerte.setFramePosition(0);
+            muerte.start();
         }
     }
 
     public void updateGame(){
 
         //Detección de colisión entre balas
-         for (Iterator<AShot> itShotUp = shotsUp.iterator(); itShotUp.hasNext(); ) {
+        for (Iterator<AShot> itShotUp = shotsUp.iterator(); itShotUp.hasNext(); ) {
             AShot AShotUp = itShotUp.next();
             for (Iterator<AShot> itShotDown = shotsDown.iterator(); itShotDown.hasNext(); ) {
                 AShot AShotDown = itShotDown.next();
@@ -171,7 +189,7 @@ public class GameManager implements Audio{
                             EnemyShip enemyShip = itEnemy.next();
                             if (AShot.collides(enemyShip)){
                                 temps.add(new SpriteTemp(temps, enemyShip.getRect().centerX(), enemyShip.getRect().centerY(),
-                                                         EXPLOSION_9_SPRITE_IMAGE, 9));
+                                        EXPLOSION_9_SPRITE_IMAGE, 9));
                                 itEnemy.remove();
                                 if (enemyShipList.size()==0){
                                     itSprite.remove();
@@ -188,13 +206,14 @@ public class GameManager implements Audio{
                             sprite.setVidas(sprite.getVidas() - 1);
                             if (sprite instanceof ICanTeleport && sprite.getVidas()> -1) {
                                 ((ICanTeleport) sprite).teleport();
+                                sprite.setPos(3,4);
                             }
                             if (sprite instanceof Random)
                             {
                                 ((Random) sprite).cambio();
                             }
                         } if (sprite.getVidas() == -1 && !(sprite instanceof SoyPacman)) {
-                            cambio("C:\\Users\\inigo\\OneDrive\\Desktop\\InvasoresFX_Inigo_Eider-main (2)\\InvasoresFX_Inigo_Eider-main\\src\\main\\java\\com\\aetxabao\\invasoresfx\\sprite\\weaponry\\large-underwater-explosion-190270.wav");
+                            cambio("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
                             reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_9_SPRITE_IMAGE, 9));
@@ -202,7 +221,7 @@ public class GameManager implements Audio{
                         }
                         else if (sprite.getVidas() == -1 && sprite instanceof SoyPacman)
                         {
-                            cambio("C:\\Users\\inigo\\OneDrive\\Desktop\\InvasoresFX_Inigo_Eider-main (2)\\InvasoresFX_Inigo_Eider-main\\src\\main\\java\\com\\aetxabao\\invasoresfx\\sprite\\weaponry\\pacman-dies.wav");
+                            cambio("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/pacman-dies.wav");
                             reproducir();
                             temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                     EXPLOSION_PACMAN, 5));
@@ -211,8 +230,9 @@ public class GameManager implements Audio{
                     }
 
                     else{
+                        cambio("src/main/java/com/aetxabao/invasoresfx/sprite/weaponry/large-underwater-explosion-190270.wav");
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
-                                                 EXPLOSION_9_SPRITE_IMAGE, 9));
+                                EXPLOSION_9_SPRITE_IMAGE, 9));
                         reproducir();
                         itSprite.remove();
                     }
@@ -245,7 +265,7 @@ public class GameManager implements Audio{
         for (ASprite enemy : enemies) {
             if (enemy instanceof ICanSpawn){
                 newList.addAll(
-                    ((ICanSpawn) enemy).spawn()
+                        ((ICanSpawn) enemy).spawn()
                 );
             }
         }
